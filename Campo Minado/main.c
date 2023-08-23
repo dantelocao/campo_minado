@@ -41,22 +41,44 @@ void inicializa_mapa(Mapa **mapa, int tamanho_mapa)
 
 void printa_mapa(Mapa **mapa, int tamanho_mapa)
 {
+    printf("    ");
+    for (int i = 0; i < tamanho_mapa; i++)
+    {
+        if (i>=10)
+        {
+            printf("%d  ", i);
+        } else{
+            printf("%d   ", i);
+        }
+        
+        
+    }
+    printf("\n");
+    
     // percorre a matriz
     for (int i = 0; i < tamanho_mapa; i++)
     {
+        if (i>=10)
+        {
+            printf("%d ", i);
+        } else{
+            printf("%d  ", i);
+        }
+        
+        
         for (int j = 0; j < tamanho_mapa; j++)
         {
             if (mapa[i][j].aberto)
             {
                 if (mapa[i][j].bomba) {
-                    printf("* ");
+                    printf(" * ");
                 }
                 else {
-                    printf("|%d|", mapa[i][j].vizinhos);
+                    printf("|%d| ", mapa[i][j].vizinhos);
                 }
                 
             } else{
-                printf("| |");
+                printf("| | ");
             }
             
         }
@@ -272,7 +294,8 @@ int main(int argc, char const *argv[])
 
         if (menu == 2)
         {
-        // joga com ia
+        // 1 tiro - atira aleatoriamente
+        // analisa matriz
         }
 
         if (menu == 1)
@@ -283,7 +306,6 @@ int main(int argc, char const *argv[])
             scanf("%d", &numero_bombas);
 
             Mapa **mapa;
-
             // aloca um vetor de tamanho_mapa ponteiros para linhas
             mapa = malloc(tamanho_mapa * sizeof(Mapa *));
             // aloca cada uma das linhas (vetores de tamanho_mapa inteiros)
